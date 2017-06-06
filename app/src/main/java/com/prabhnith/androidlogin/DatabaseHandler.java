@@ -2,6 +2,7 @@ package com.prabhnith.androidlogin;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -64,7 +65,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return id;
     }
 
-    public void showEmpInfo() {
-
+    public Cursor getEmpList() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "select ID _id, EmpName from EmpInfo";
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
     }
 }
